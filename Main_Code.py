@@ -100,6 +100,7 @@ Mode_Toggle = 1
 # ======================= Auixilary Functions =======================
 def Startup_Setup():
     GPIO.setmode(GPIO.BOARD)
+    GPIO.setwarnings(False)
     setup_motors()
     Configure_Button()
     Add_Button_Events()
@@ -150,10 +151,10 @@ def Add_Button_Events():
     GPIO.add_event_detect(Mode_Btn, GPIO.RISING, callback=toggle_mode_Event, bouncetime=300)
     GPIO.add_event_detect(Img_Capture_Btn, GPIO.RISING, callback=Capture_image_Event, bouncetime=300)
     GPIO.add_event_detect(Play_n_Pause, GPIO.RISING, callback=Play_n_Pause_Event, bouncetime=300)
-    GPIO.add_event_detect(Next_Page_Event, GPIO.RISING, callback=Next_Page_Event, bouncetime=300)
-    GPIO.add_event_detect(Prev_Page_Event, GPIO.RISING, callback=Prev_Page_Event, bouncetime=300)
-    GPIO.add_event_detect(Next_PDF_Event, GPIO.RISING, callback=Next_PDF_Event, bouncetime=300)
-    GPIO.add_event_detect(Prev_PDF_Event, GPIO.RISING, callback=Prev_PDF_Event, bouncetime=300)
+    GPIO.add_event_detect(Next_Page, GPIO.RISING, callback=Next_Page_Event, bouncetime=300)
+    GPIO.add_event_detect(Prev_Page, GPIO.RISING, callback=Prev_Page_Event, bouncetime=300)
+    GPIO.add_event_detect(Next_PDF, GPIO.RISING, callback=Next_PDF_Event, bouncetime=300)
+    GPIO.add_event_detect(Prev_PDF, GPIO.RISING, callback=Prev_PDF_Event, bouncetime=300)
 
 def Picture_Mode():
     return
